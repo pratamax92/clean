@@ -93,14 +93,12 @@ class WeatherMenuFragment : com.cartenz.component_base.BaseFragment() {
 
     private fun showWeatherData(weatherInfo: WeatherInfo) {
         hideLoading(weatherLoadingProgress)
-        Log.wtf("Test_weather", "" + gson.toJson(weatherInfo.weather))
         temperature.text = convertKelvinToCelsius(weatherInfo.temperature)
         pressure.text = weatherInfo.pressure.toString()
         humidity.text = weatherInfo.humidity.toString()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.wtf("Test_", "k-abc")
         super.onActivityResult(requestCode, resultCode, data)
 
     }

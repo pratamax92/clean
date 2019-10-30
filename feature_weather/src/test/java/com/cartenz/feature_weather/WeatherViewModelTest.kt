@@ -29,17 +29,17 @@ class WeatherViewModelTest {
   @get:Rule
   val mockitoRule: MockitoRule = MockitoJUnit.rule()
   
-  @Test
-  fun `test getWeather sets liveData value when success`() = runBlocking {
-    whenever(getWeather(OSIJEK_CITY_NAME)).thenReturn(
-        com.cartenz.component_base_domain.Success(
-            WeatherInfo(
-              TEMP,
-              HUMIDITY,
-              PRESSURE
-            )
-        )
-    )
-    weatherViewModel.getWeatherForLocation(OSIJEK_CITY_NAME)
-  }
+//  @Test
+//  fun `test getWeather sets liveData value when success`() = runBlocking {
+//    whenever(getWeather(OSIJEK_CITY_NAME)).thenReturn(
+//        com.cartenz.component_base_domain.Success(
+//            WeatherInfo(
+//              TEMP,
+//              HUMIDITY,
+//              PRESSURE
+//            )
+//        )
+//    )
+//    weatherViewModel.getWeatherForLocation(OSIJEK_CITY_NAME)
+//  }
 }

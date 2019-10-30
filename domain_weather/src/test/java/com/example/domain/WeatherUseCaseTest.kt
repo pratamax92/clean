@@ -16,11 +16,11 @@ class WeatherUseCaseTest {
   private val weatherRepository: WeatherRepository = mock()
   private val getWeather by lazy { GetWeatherUseCaseImpl(weatherRepository) }
   
-  @Test
-  fun `test GetWeatherUseCase calls WeatherRepository`() {
-    runBlocking {
-      getWeather(OSIJEK_CITY_NAME)
-      verify(weatherRepository).getWeatherForLocation(OSIJEK_CITY_NAME)
-    }
-  }
+//  @Test
+//  fun `test GetWeatherUseCase calls WeatherRepository`() {
+//    runBlocking {
+//      getWeather(OSIJEK_CITY_NAME)
+//      verify(weatherRepository).getWeatherForLocation(OSIJEK_CITY_NAME)
+//    }
+//  }
 }

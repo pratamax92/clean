@@ -8,14 +8,13 @@ import com.example.data.database.model.WeatherEntity
 interface WeatherDao {
   
   @Transaction
-  suspend fun updateWeatherAndReturn(weather: WeatherEntity): WeatherEntity {
+  suspend fun updateWeatherAndReturn(weather: WeatherEntity) {
     saveWeatherInfo(weather)
-    return getWeatherInfoForCity(weather.name ?: "")
   }
   
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   suspend fun saveWeatherInfo(weather: WeatherEntity)
   
   @Query("SELECT * FROM $WEATHER_TABLE_NAME WHERE name = :city LIMIT 1")
-  suspend fun getWeatherInfoForCity(city: String): WeatherEntity
+  suspend fun getWeatherInfoForCity(city: String): WeatherEntity?
 }

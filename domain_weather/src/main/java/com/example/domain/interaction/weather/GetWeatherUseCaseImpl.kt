@@ -5,9 +5,8 @@ import com.example.domain.data.WeatherInfo
 import com.example.domain.repository.WeatherRepository
 
 class GetWeatherUseCaseImpl(private val weatherRepository: WeatherRepository) : GetWeatherUseCase {
-
-    override suspend fun weatherInfo(location: String): Result<WeatherInfo> {
-        return weatherRepository.getWeatherForLocation(location)
+    override suspend fun weatherOffline(location: String): Result<WeatherInfo> {
+        return weatherRepository.getWeatherOffline(location)
     }
 
     override suspend fun weather(location: String): Result<WeatherInfo> {

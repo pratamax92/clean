@@ -1,17 +1,21 @@
-package com.example.data.networking.model
+package com.example.data.networking.response
 
+import com.cartenz.component_base_network.DomainMapper
 import com.cartenz.component_base_network.RoomMapper
 import com.example.data.database.model.WeatherEntity
+import com.example.domain.data.WeatherInfo
+import org.koin.core.KoinComponent
 
-data class WeatherInfoResponse(
+
+class WeatherResponse(
     val id: Int? = 0,
     val weather: List<Weather>?,
     val main: MainInfo?,
     val name: String? = ""
-) : RoomMapper<WeatherEntity> {
-    override fun mapToRoomEntity() =
-        WeatherEntity(id, weather ?: arrayListOf(), main ?: MainInfo(), name ?: "")
+) : DomainMapper<WeatherInfo>, KoinComponent {
+    override fun mapToDomainModel() = WeatherInfo(weather, main?.temp ?: 0.0, main?.humidity ?: 0, main?.pressure ?: 0.0)
 }
+
 
 data class MainInfo(
     val temp: Double? = 0.0,
@@ -25,4 +29,6 @@ data class Weather(
     val description: String? = "",
     val icon: String? = ""
 )
+
+
 

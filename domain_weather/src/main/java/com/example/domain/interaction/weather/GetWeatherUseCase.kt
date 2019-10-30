@@ -5,9 +5,12 @@ import com.example.domain.data.WeatherInfo
 
 interface GetWeatherUseCase : com.cartenz.component_base_domain.BaseUseCase<String, WeatherInfo> {
 
-    suspend fun weatherInfo(location: String): Result<WeatherInfo>
-
     suspend fun weather(location: String): Result<WeatherInfo>
+    suspend fun weatherOffline(location: String): Result<WeatherInfo>
+
+
+
+    //add here if you want to create new call API function
 
 
 }
