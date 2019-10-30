@@ -1,0 +1,24 @@
+<resources>
+    <string name="mobile">Mobile</string>
+
+    <string name="success">Berhasil</string>
+    <string name="failed">Gagal</string>
+    <string name="close_message">Apakah anda ingin keluar ? </string>
+    <string name="close">Tutup</string>
+    <string name="next">Lanjut</string>
+    <string name="download">Unduh</string>
+    <string name="downloading">Mengunduh</string>
+    <string name="saveprocess">Proses Menyimpan</string>
+    <string name="process">Proses</string>
+    <string name="finish">Selesai</string>
+
+    <string name="search">Cari</string>
+    <string name="empty_data">Tidak Ada Data</string>
+    <string name="empty_data_desc">Ketuk untuk menambah data</string>
+    <string name="empty_data_connection_failed">Gagal Terhubung, klik gambar untuk mengunduh ulang data</string>
+
+    <string name="or">Atau</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
+
+</resources>

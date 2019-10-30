@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+
+android {
+    compileSdkVersion Integer.parseInt(ANDROID_COMPILE_SDK_VERSION)
+    defaultConfig {
+        minSdkVersion Integer.parseInt(ANDROID_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(":core")
+
+    //design libs
+    api "com.google.android.material:material:$androidxDesignVersion"
+    api "androidx.constraintlayout:constraintlayout:$androidxContraintlayoutVersion"
+
+    //di
+    api "org.koin:koin-android:$koinVersion"
+    api "org.koin:koin-androidx-viewmodel:$koinVersion"
+    api "org.koin:koin-androidx-scope:$koinVersion"
+
+    //arhitecture components
+    api "android.arch.lifecycle:viewmodel:$arhitectureComponentsVersion"
+    kapt "android.arch.lifecycle:compiler:$arhitectureComponentsVersion"
+    api "androidx.lifecycle:lifecycle-extensions:$arhitectureComponentsVersion"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$arhitectureComponentsVersion"
+    api "androidx.lifecycle:lifecycle-runtime-ktx:$arhitectureComponentsVersion"
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$arhitectureComponentsVersion"
+
+    //coroutines
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+
+    api "androidx.navigation:navigation-fragment:$navigationVersion" // For Kotlin use navigation-fragment-ktx
+    api "androidx.navigation:navigation-ui:$navigationVersion" // For Kotlin use navigation-ui-ktx
+
+}

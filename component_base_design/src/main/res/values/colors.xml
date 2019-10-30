@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="grey_1">#78849e</color>
+    <color name="grey_2">#959dad</color>
+    <color name="grey_3">#d0d3d8</color> <!--accent-->
+    <color name="grey_4">#F7F7FA</color>
+    <color name="grey_5">#E4E7EC</color>
+
+    <color name="white_1">#ffffff</color>
+    <color name="white_2">#FCFCFC</color>
+    <color name="white_3">#FAFAFA</color>
+    <color name="white_4">#E1E4E9</color>
+    <color name="white_transparant">#aaffffff</color>
+
+    <color name="grey_transparent">#4De2e8ed</color>
+    <color name="black_transparent">#bb000000</color>
+    <color name="transparent">#00000000</color>
+
+    <!--Primary Color-->
+    <color name="black_1">#111318</color>
+    <color name="black_2">#222731</color>
+    <color name="black_3">#333b4a</color>
+    <color name="black_4">#454f63</color>
+    <color name="black_5">#78849e</color>
+    <color name="black_5_20">#3378849e</color>
+    <color name="black_6">#959dad</color>
+
+
+    <color name="blue_1">#094b69</color>
+    <color name="blue_2">#0b5b7f</color>
+    <color name="blue_3">#039be5</color>
+    <color name="blue_4">#17b7ff</color>
+    <color name="blue_5">#51c9ff</color>
+    <color name="blue_6">#8bdbff</color>
+    <color name="blue_7">#c5edff</color>
+
+    <!--Secondary Color-->
+    <color name="sky_1">#a5f2fc</color>
+    <color name="sky_2">#aef4fd</color>
+    <color name="sky_3">#b9f7ff</color>
+    <color name="sky_4">#caf6fc</color>
+    <color name="sky_5">#d2f7fc</color>
+    <color name="sky_6">#dbf9fd</color>
+    <color name="sky_7">#e4fafd</color>
+
+    <color name="duck_egg_1">#baffc0</color>
+    <color name="duck_egg_2">#d0fdd4</color>
+    <color name="duck_egg_3">#e0fde3</color>
+    <color name="duck_egg_4">#ebfded</color>
+    <color name="duck_egg_5">#eefdf0</color>
+    <color name="duck_egg_6">#f1fdf3</color>
+    <color name="duck_egg_7">#f5fef6</color>
+
+    <color name="red_1">#a93a39</color>
+    <color name="red_2">#c54342</color>
+    <color name="red_3">#e14d4c</color>
+    <color name="red_4">#fe5756</color>
+    <color name="red_5">#fe7877</color>
+    <color name="red_6">#fe9a99</color>
+    <color name="red_7">#febbbb</color>
+
+    <color name="blue_v2_1">#184674</color>
+    <color name="blue_v2_2">#185ea3</color>
+    <color name="blue_v2_3">#1976d2</color>
+    <color name="blue_v2_4">#4690da</color>
+    <color name="blue_v2_5">#8ab9e8</color>
+
+
+    <color name="yellow_3">#FFD763</color>
+</resources>

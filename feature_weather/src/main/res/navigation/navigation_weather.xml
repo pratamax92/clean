@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/weather_nav"
+    app:startDestination="@id/welcomeFragment">
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.cartenz.feature_weather.ui.welcome.WelcomeFragment"
+        android:label="FirstFragment"
+        tools:layout="@layout/fragment_welcome">
+
+        <deepLink app:uri="@string/feature_weather_deeplink" />
+
+        <action
+            android:id="@+id/action_welcomeFragment_to_menuFragment"
+            app:destination="@id/weatherMenuFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherMenuFragment"
+        android:name="com.cartenz.feature_weather.ui.weatherMenu.WeatherMenuFragment"
+        android:label="WeatherMenuFragment"
+        tools:layout="@layout/fragment_weather_menu">
+        <action
+            android:id="@+id/action_menuFragment_to_DetailFragment"
+            app:destination="@id/weatherDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.cartenz.feature_weather.ui.weatherDetail.WeatherDetailsFragment"
+        android:label="WeatherDetailFragment"
+        tools:layout="@layout/fragment_weather_detail"/>
+
+</navigation>

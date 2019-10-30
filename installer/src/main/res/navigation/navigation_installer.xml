@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_installer"
+    app:startDestination="@id/installerFragment">
+
+    <fragment
+        android:id="@+id/installerFragment"
+        android:name="com.cobeisfresh.template.InstallerFragment"
+        android:label="InstallerFragment"
+        tools:layout="@layout/fragment_installer">
+
+        <deepLink app:uri="@string/installer_app" />
+
+    </fragment>
+
+    <include app:graph="@navigation/navigation_weather"/>
+    <include app:graph="@navigation/navigation_test"/>
+
+
+</navigation>

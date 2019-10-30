@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">core</string>
+<!--    rumus : appname :// module name-->
+    <string name="installer_app">cartenz://installer</string>
+    <string name="feature_test_deeplink">cartenz://feature_test</string>
+    <string name="feature_weather_deeplink">cartenz://feature_weather</string>
+
+</resources>

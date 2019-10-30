@@ -1,0 +1,61 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="dimens_2dp">2dp</dimen>
+    <dimen name="dimens_4dp">4dp</dimen>
+    <dimen name="dimens_8dp">8dp</dimen>
+    <dimen name="dimens_12dp">12dp</dimen>
+    <dimen name="dimens_14dp">14dp</dimen>
+    <dimen name="dimens_16dp">16dp</dimen>
+    <dimen name="dimens_18dp">18dp</dimen>
+    <dimen name="dimens_24dp">24dp</dimen>
+    <dimen name="dimens_32dp">32dp</dimen>
+    <dimen name="dimens_40dp">40dp</dimen>
+    <dimen name="dimens_48dp">48dp</dimen>
+    <dimen name="dimens_56dp">56dp</dimen>
+    <dimen name="dimens_64dp">64dp</dimen>
+    <dimen name="dimens_72dp">72dp</dimen>
+    <dimen name="dimens_80dp">80dp</dimen>
+    <dimen name="dimens_96dp">96dp</dimen>
+    <dimen name="dimens_100dp">100dp</dimen>
+    <dimen name="dimens_120dp">120dp</dimen>
+    <dimen name="dimens_160dp">160dp</dimen>
+    <dimen name="dimens_180dp">180dp</dimen>
+    <dimen name="dimens_200dp">200dp</dimen>
+    <dimen name="dimens_240dp">240dp</dimen>
+    <dimen name="dimens_280dp">280dp</dimen>
+    <dimen name="dimens_320dp">320dp</dimen>
+
+    <dimen name="text_8sp">8sp</dimen>
+    <dimen name="text_10sp">10sp</dimen>
+    <dimen name="text_12sp">12sp</dimen>
+    <dimen name="text_14sp">14sp</dimen>
+    <dimen name="text_16sp">16sp</dimen>
+    <dimen name="text_18sp">18sp</dimen>
+    <dimen name="text_24sp">24sp</dimen>
+    <dimen name="text_32sp">32sp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_smaller">@dimen/dimens_2dp</dimen>
+    <dimen name="padding_small">@dimen/dimens_4dp</dimen>
+    <dimen name="padding_medium">@dimen/dimens_8dp</dimen>
+    <dimen name="padding_large">@dimen/dimens_16dp</dimen>
+    <dimen name="padding_larger">@dimen/dimens_32dp</dimen>
+
+    <!-- Margin -->
+    <dimen name="margin_smaller">@dimen/dimens_2dp</dimen>
+    <dimen name="margin_small">@dimen/dimens_4dp</dimen>
+    <dimen name="margin_medium">@dimen/dimens_8dp</dimen>
+    <dimen name="margin_large">@dimen/dimens_16dp</dimen>
+    <dimen name="margin_larger">@dimen/dimens_32dp</dimen>
+
+    <!-- Text Font -->
+    <dimen name="font_smaller">@dimen/text_10sp</dimen>
+    <dimen name="font_small">@dimen/text_12sp</dimen>
+    <dimen name="font_medium">@dimen/text_14sp</dimen>
+    <dimen name="font_large">@dimen/text_16sp</dimen>
+    <dimen name="font_larger">@dimen/text_18sp</dimen>
+
+
+</resources>

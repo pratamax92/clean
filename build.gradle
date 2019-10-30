@@ -1,0 +1,78 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript { 
+
+    ext {
+        appVersionName = VERSION_NAME
+        appVersionCode = VERSION_CODE
+
+        navigationVersion = NAVIGATION_VERSION
+        navigationSafeArgsVersion = NAVIGATION_SAFE_ARGS_VERSION
+        gradleVersion = GRADLE_VERSION
+        androidMinSdkVersion = ANDROID_MIN_SDK_VERSION
+        androidTargetSdkVersion = ANDROID_TARGET_SDK_VERSION
+        androidCompileSdkVersion = ANDROID_COMPILE_SDK_VERSION
+        androidBuildToolsVersion = ANDROID_BUILD_TOOLS_VERSION
+
+        kotlinVersion = KOTLIN_VERSION
+        androidxCompatVersion = ANDROIDX_COMPAT_VERSION
+        androidxDesignVersion = ANDROIDX_DESIGN_VERSION
+        androidxContraintlayoutVersion = ANDROIDX_CONTRAINTLAYOUT_VERSION
+        arhitectureComponentsVersion = ARHITECTURECOMPONENTS_VERSION
+
+        koinVersion = KOIN_VERSION
+
+        roomVersion = ROOM_VERSION
+
+        coroutinesVersion = COROUTINES_VERSION
+
+        okhttp3loginterceptorVersion = OKHTTP3LOGINTERCEPTOR_VERSION
+        retrofitVersion = RETROFIT_VERSION
+
+        gliderVersion = GLIDER_VERSION
+        calligraphyVersion = CALLIGRAPHY_VERSION
+        iconifyVersion = ICONIFY_VERSION
+        cropperVersion = CROPPER_VERSION
+        photoviewVersion = PHOTOVIEW_VERSION
+        signatureVersion = SIGNATURE_VERSION
+        anncaVideoVersion = ANNCA_VIDEO_VERSION
+
+        playserviceVersion = PLAYSERVICE_VERSION
+        multidexVersion = MULTIDEX_VERSION
+
+        googlemapVersion = GOOGLEMAP_VERSION
+        googlemapUtilsVersion = GOOGLEMAP_UTILS_VERSION
+
+        firebaseVersion = FIREBASE_VERSION
+        firebaseMessageVersion = FIREBASE_MSG_VERSION
+        crashlyticVersion = CRASHLYTIC_VERSION
+
+        junitVersion = JUNIT_VERSION
+        mockitoVersion = MOCKITO_VERSION
+        runnerVersion = RUNNER_VERSION
+        espressoVersion = ESPRESSO_VERSION
+    }
+
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$gradleVersion"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:$navigationSafeArgsVersion"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

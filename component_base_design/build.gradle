@@ -1,0 +1,48 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion Integer.parseInt(ANDROID_COMPILE_SDK_VERSION)
+
+    defaultConfig {
+        minSdkVersion Integer.parseInt(ANDROID_MIN_SDK_VERSION)
+        targetSdkVersion Integer.parseInt(ANDROID_TARGET_SDK_VERSION)
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api "androidx.appcompat:appcompat:$androidxCompatVersion"
+    api "androidx.legacy:legacy-support-v4:$androidxDesignVersion"
+    api "com.google.android.material:material:$androidxDesignVersion"
+    api "androidx.cardview:cardview:$androidxDesignVersion"
+
+    api "com.github.bumptech.glide:glide:$gliderVersion"
+    kapt "com.github.bumptech.glide:compiler:$gliderVersion"
+    api "com.github.bumptech.glide:okhttp3-integration:$gliderVersion"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+}
