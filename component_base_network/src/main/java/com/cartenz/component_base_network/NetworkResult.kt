@@ -1,5 +1,6 @@
 package com.cartenz.component_base_network
 
+import com.cartenz.component_base_domain.HttpError
 import retrofit2.Response
 import java.io.IOException
 
@@ -28,16 +29,28 @@ inline fun <T : Any> Response<T>.onFailure(action: (com.cartenz.component_base_d
     }
 }
 
-inline fun <R : DomainMapper<U>, U : Any> Response<R>.getData(logic: (R) -> Unit): com.cartenz.component_base_domain.Result<U> {
+inline fun <R : DomainMapper<U>, U : Any> Response<R>.getData(
+    successLogic: (R) -> Unit,
+    failedLogic: (it: HttpError) -> U?
+): com.cartenz.component_base_domain.Result<U> {
     try {
         onSuccess {
-            logic(it)
+            successLogic(it)
             return com.cartenz.component_base_domain.Success(
                 it.mapToDomainModel()
             )
         }
         onFailure {
-            com.cartenz.component_base_domain.Failure(
+            val cachedModel: Any? = failedLogic(it)
+            if (cachedModel != null) {
+                com.cartenz.component_base_domain.Success(cachedModel)
+            } else {
+                com.cartenz.component_base_domain.Failure(
+                    com.cartenz.component_base_domain.HttpError(Throwable(DB_ENTRY_ERROR))
+                )
+            }
+
+            return com.cartenz.component_base_domain.Failure(
                 com.cartenz.component_base_domain.HttpError(Throwable(GENERAL_NETWORK_ERROR))
             )
         }
@@ -54,34 +67,3 @@ inline fun <R : DomainMapper<U>, U : Any> Response<R>.getData(logic: (R) -> Unit
         )
     }
 }
-
-
-//inline fun <T : RoomMapper<R>, R : DomainMapper<U>, U : Any> Response<T>.getData(
-//    cacheAction: (R) -> Unit,
-//    fetchFromCacheAction: () -> R
-//): com.cartenz.component_base_domain.Result<U> {
-//    try {
-//        onSuccess {
-//            val databaseEntity = it.mapToRoomEntity()
-//            cacheAction(databaseEntity)
-//            return com.cartenz.component_base_domain.Success(databaseEntity.mapToDomainModel())
-//        }
-//        onFailure {
-//            val cachedModel = fetchFromCacheAction()
-//            if (cachedModel != null) com.cartenz.component_base_domain.Success(cachedModel.mapToDomainModel()) else com.cartenz.component_base_domain.Failure(
-//                com.cartenz.component_base_domain.HttpError(Throwable(DB_ENTRY_ERROR))
-//            )
-//        }
-//        return com.cartenz.component_base_domain.Failure(
-//            com.cartenz.component_base_domain.HttpError(
-//                Throwable(GENERAL_NETWORK_ERROR)
-//            )
-//        )
-//    } catch (e: IOException) {
-//        return com.cartenz.component_base_domain.Failure(
-//            com.cartenz.component_base_domain.HttpError(
-//                Throwable(GENERAL_NETWORK_ERROR)
-//            )
-//        )
-//    }
-//}

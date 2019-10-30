@@ -25,9 +25,12 @@ class WeatherRepositoryImpl(
         val data = fetchData(
             apiDataProvider = {
                 weatherApi.getWeather(location).getData(
-                    logic = { it ->
+                    successLogic = { it ->
                         val entity = WeatherEntity(it.id, it.weather, it.main, it.name)
                         weatherDao.saveWeatherInfo(entity)
+                    },
+                    failedLogic = {
+                        null
                     }
                 )
             }
