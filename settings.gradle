@@ -1,1 +1,1 @@
-include ':installer', ':domain_weather', ':data_weather', ':core', ':feature_weather', ':feature_test', ':component_base_feature', ':component_base_network', ':component_base_domain', ':component_base_design'
+include ':installer', ':domain_weather', ':data_weather', ':core', ':feature_weather', ':feature_test', ':component_base_feature', ':component_base_network', ':component_base_domain'
