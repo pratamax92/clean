@@ -1,7 +1,5 @@
 package com.cartenz.component_base
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.CoroutineScope
@@ -10,13 +8,11 @@ import kotlinx.coroutines.launch
 import org.koin.core.KoinComponent
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel<T : Any> : ViewModel(), KoinComponent {
-    protected val _viewState = MutableLiveData<ViewState<T>>()
-    val viewState: LiveData<ViewState<T>>
-        get() = _viewState
+abstract class BaseViewModel : ViewModel(), KoinComponent {
+    abstract fun getCoroProvider(): CoroutineContext
 
     protected fun executeUseCase(action: suspend () -> Unit) {
-        _viewState.value = Loading()
+//        _viewState.value = Loading()
         launch { action() }
     }
 
@@ -27,5 +23,5 @@ abstract class BaseViewModel<T : Any> : ViewModel(), KoinComponent {
         return viewModelScope.launch(coroutineContext) { block() }
     }
 
-    abstract fun getCoroProvider(): CoroutineContext
+
 }

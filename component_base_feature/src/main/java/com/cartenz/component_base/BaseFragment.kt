@@ -46,6 +46,8 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun viewReady()
 
+    abstract fun subscribeData()
+
     abstract fun getLayout(): Int
 
     open fun showError(@StringRes errorMessage: Int, rootView: View) {

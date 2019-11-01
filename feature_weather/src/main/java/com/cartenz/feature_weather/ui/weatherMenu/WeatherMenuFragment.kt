@@ -1,7 +1,6 @@
 package com.cartenz.feature_weather.ui.weatherMenu
 
 import android.content.Intent
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -11,7 +10,6 @@ import com.cartenz.component_base.extensions.hideKeyboard
 import com.cartenz.component_base.extensions.onClick
 import com.cartenz.component_base.extensions.snackbar
 import com.cartenz.component_base.extensions.subscribe
-import com.cartenz.core.CartenzApp.Companion.gson
 import com.cartenz.feature_weather.R
 import com.cartenz.feature_weather.TestActivity
 import com.cartenz.feature_weather.common.convertKelvinToCelsius
@@ -50,12 +48,16 @@ class WeatherMenuFragment : com.cartenz.component_base.BaseFragment() {
     }
 
     override fun viewReady() {
-//    viewModel.getWeatherForLocation()
-        subscribeToData()
+        subscribeData()
 
         getWeather.onClick {
             weatherFragmentContainer.hideKeyboard()
             menuViewModel.getWeatherForLocation(cityInput.text.toString())
+        }
+
+        checkWeatherDb.onClick {
+            weatherFragmentContainer.hideKeyboard()
+            menuViewModel.getWeatherFromDatabase(cityInput.text.toString())
         }
 
         showWeatherDetails.onClick {
@@ -68,9 +70,11 @@ class WeatherMenuFragment : com.cartenz.component_base.BaseFragment() {
         }
     }
 
-    private fun subscribeToData() {
-        menuViewModel.viewState.subscribe(this, ::handleViewState)
+    override fun subscribeData() {
+        menuViewModel.weatherState.subscribe(this, ::handleViewState)
+        menuViewModel.checkDbExist.subscribe(this, ::handleCheckExist)
     }
+
 
     private fun handleViewState(viewState: com.cartenz.component_base.ViewState<WeatherInfo>) {
         when (viewState) {
@@ -80,6 +84,15 @@ class WeatherMenuFragment : com.cartenz.component_base.BaseFragment() {
             is com.cartenz.component_base.NoInternetState -> showNoInternetError()
         }
     }
+
+    private fun handleCheckExist(boolean: Boolean) {
+        if (boolean) {
+            snackbar("EXIST", weatherFragmentContainer)
+        } else {
+            snackbar("NOT EXIST", weatherFragmentContainer)
+        }
+    }
+
 
     private fun handleError(error: String) {
         hideLoading(weatherLoadingProgress)

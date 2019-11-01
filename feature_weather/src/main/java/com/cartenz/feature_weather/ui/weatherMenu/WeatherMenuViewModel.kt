@@ -1,6 +1,11 @@
 package com.cartenz.feature_weather.ui.weatherMenu
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.cartenz.component_base.BaseViewModel
+import com.cartenz.component_base.Loading
+import com.cartenz.component_base.ViewState
 import com.cartenz.component_base_domain.onFailure
 import com.cartenz.component_base_domain.onSuccess
 import com.cartenz.component_base_network.coroutine.CoroutineContextProvider
@@ -8,32 +13,39 @@ import com.cartenz.feature_weather.common.DEFAULT_CITY_NAME
 import com.example.domain.data.WeatherInfo
 import com.example.domain.interaction.weather.GetWeatherUseCase
 
-class WeatherMenuViewModel(private val getWeather: GetWeatherUseCase) :
-    com.cartenz.component_base.BaseViewModel<WeatherInfo>() {
+
+class WeatherMenuViewModel(private val getWeather: GetWeatherUseCase) : BaseViewModel() {
+
     override fun getCoroProvider() = CoroutineContextProvider().main
 
-    fun getWeatherForLocation(location: String = DEFAULT_CITY_NAME) = executeUseCase {
-        getWeather.weather(location)
-            .onSuccess {
-                Log.wtf("Test_","callapi_success")
-                getWeatherFromDatabase(location)
-            }
-            .onFailure {
-                Log.wtf("Test_","callapi_failure")
-                getWeatherFromDatabase(location)
-            }
-    }
+    protected val _weatherState = MutableLiveData<ViewState<WeatherInfo>>()
+    val weatherState: LiveData<ViewState<WeatherInfo>>
+        get() = _weatherState
 
-    //for testing purpose, check data saved to database or not
+    protected val _checkDbExist = MutableLiveData<Boolean>()
+    val checkDbExist: LiveData<Boolean>
+        get() = _checkDbExist
+
+
+    fun getWeatherForLocation(location: String = DEFAULT_CITY_NAME) =
+        executeUseCase {
+            _weatherState.value = Loading()
+            getWeather.weather(location)
+                .onSuccess {
+                    _weatherState.value = com.cartenz.component_base.Success(it)
+                }
+                .onFailure {
+                    _weatherState.value = com.cartenz.component_base.Error(it.throwable)
+                }
+        }
+
     fun getWeatherFromDatabase(location: String = DEFAULT_CITY_NAME) = executeUseCase {
         getWeather.weatherOffline(location)
             .onSuccess {
-                Log.wtf("Test_","offline_success")
-                _viewState.value = com.cartenz.component_base.Success(it)
+                _checkDbExist.value = true
             }
             .onFailure {
-                Log.wtf("Test_","offline_failed")
-                _viewState.value = com.cartenz.component_base.Error(it.throwable)
+                _checkDbExist.value = false
             }
     }
 }
